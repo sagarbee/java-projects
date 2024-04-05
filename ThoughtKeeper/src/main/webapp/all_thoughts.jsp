@@ -42,7 +42,7 @@
 							</p>
 							<div clss="container">
 								<a href="#" class="btn btn-primary">Update</a> 
-								<a href="#" class="btn btn-danger">Delete</a>
+								<a href="DeleteServlet?thought_id=<%=thought.getId() %>" class="btn btn-danger">Delete</a>
 
 							</div>
 						</div>
