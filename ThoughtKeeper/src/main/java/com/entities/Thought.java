@@ -3,6 +3,7 @@ package com.entities;
 import java.util.Date;
 import java.util.Random;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -14,6 +15,8 @@ public class Thought {
 	@Id
 	private int id;
 	private String title;
+	
+	@Column(length = 1500)
 	private String content;
 	private Date addedDate;
 	
