@@ -18,11 +18,11 @@
 
 		<!-- this is add form  -->
 
-		<form action="SaveNoteServlet" method="post">
+		<form action="SaveThoughtServlet" method="post">
 
 			<div class="form-group">
-				<label for="title">What's in your mind?</label> <input name="title" required
-					type="text" class="form-control" id="title"
+				<label for="title">What's in your mind?</label> <input name="title"
+					required type="text" class="form-control" id="title"
 					aria-describedby="emailHelp" placeholder="Enter here" />
 
 			</div>

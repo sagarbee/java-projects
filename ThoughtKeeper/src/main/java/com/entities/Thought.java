@@ -4,13 +4,14 @@ import java.util.Date;
 import java.util.Random;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="thought")
 public class Thought {
 
-
+	@Id
 	private int id;
 	private String title;
 	private String content;
@@ -21,7 +22,7 @@ public class Thought {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Thought(int id, String title, String content, Date addedDate) {
+	public Thought(String title, String content, Date addedDate) {
 		super();
 		this.id = new Random().nextInt(10000);
 		this.title = title;
@@ -31,10 +32,6 @@ public class Thought {
 
 	public int getId() {
 		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public String getTitle() {
