@@ -23,7 +23,7 @@
 			<div class="form-group">
 				<label for="title">What's in your mind?</label> <input name="title"
 					required type="text" class="form-control" id="title"
-					aria-describedby="emailHelp" placeholder="Enter here" />
+					placeholder="Enter here" />
 
 			</div>
 

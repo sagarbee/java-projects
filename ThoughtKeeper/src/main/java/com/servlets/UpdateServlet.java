@@ -1,7 +1,6 @@
 package com.servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Date;
 
 import javax.servlet.ServletException;
@@ -15,42 +14,39 @@ import org.hibernate.Transaction;
 import com.entities.Thought;
 import com.helper.FactoryProvider;
 
-public class SaveThoughtServlet extends HttpServlet {
+
+public class UpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-
-    public SaveThoughtServlet() {
+    
+    public UpdateServlet() {
         super();
-
+        
     }
 
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		try {
 			
 			String title = request.getParameter("title");
 			String content = request.getParameter("content");
-			
-			Thought thought = new Thought(title,content,new Date());
-//			System.out.println(thought.getId());
-			
-			Session session = FactoryProvider.getFactory().openSession();			
-			
+			int thoughtId = Integer.parseInt(request.getParameter("thoughtId").trim());
+			Session session = FactoryProvider.getFactory().openSession();
 			Transaction transaction = session.beginTransaction();
 			
-			session.save(thought);
+			Thought thought = session.get(Thought.class,thoughtId);
+			thought.setTitle(title);
+			thought.setContent(content);
+			thought.setAddedDate(new Date());
 			
 			transaction.commit();
-			
 			session.close();
-			response.setContentType("text/html");
-			PrintWriter out = response.getWriter();
-			out.println("<h1>Thought save successfully</h1>");
 			response.sendRedirect("all_thoughts.jsp");
-		}catch(Exception e){
+			
+		}catch(Exception e)
+		{
 			e.printStackTrace();
 		}
-		
 	}
 
 }

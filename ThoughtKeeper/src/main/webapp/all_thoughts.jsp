@@ -3,6 +3,7 @@
 <%@page import="com.entities.Thought"%>
 <%@page import="java.util.List"%>
 <%@page import="org.hibernate.query.Query"%>
+<%@page import="java.text.SimpleDateFormat"%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -27,6 +28,7 @@
 				Session session1 = FactoryProvider.getFactory().openSession();
 				Query<Thought> query = session1.createQuery("from Thought");
 				List<Thought> list = query.list();
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 				for (Thought thought : list) {
 				%>
 				<center>
@@ -39,11 +41,10 @@
 							</h5>
 							<p class="card-text">
 								<%=thought.getContent()%>
-							</p>
-							<div clss="container">
-								<a href="#" class="btn btn-primary">Update</a> 
+							</p><b><%= sdf.format(thought.getAddedDate()) %></b>
+							<div class="container">
+								<a href="edit.jsp?thought_id=<%=thought.getId() %>" class="btn btn-primary">Update</a> 
 								<a href="DeleteServlet?thought_id=<%=thought.getId() %>" class="btn btn-danger">Delete</a>
-
 							</div>
 						</div>
 					</div>

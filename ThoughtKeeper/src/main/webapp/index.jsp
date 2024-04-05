@@ -20,8 +20,8 @@
 			<h1 class="text-primary text-uppercase text-center mt-3">Write Your Thought's</h1>
 
 			<div class="container text-center">
-				<a href="add_thought.jsp" class="btn btn-outline-primary text-center">Start
-					here</a>
+				<a href="add_thought.jsp" class="btn btn-outline-primary text-center">Click Here
+				</a>
 			</div>
 
 		</div>
