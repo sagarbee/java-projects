@@ -9,17 +9,23 @@ public class EmployeeUpdate {
 
 	public static void main(String[] args) {
 
-//		Employee employee = new Employee();
-//		employee.setId(300);
-//		employee.setName("Ravi");
-//		employee.setAddress("Mumbai");
+
 
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("sagar");
 		EntityManager manager = factory.createEntityManager();
 		EntityTransaction transaction = manager.getTransaction();
 
-		Employee checkEmployee = manager.find(Employee.class,1);
+		
+		Employee checkEmployee = manager.find(Employee.class, 1);
+		
+//		Employee employee = new Employee();
+		
 //		if (checkEmployee != null) {
+		
+//		employee.setId(300);
+//		employee.setName("Ravi");
+//		employee.setAddress("Mumbai");
+		
 //			transaction.begin();
 //			manager.merge(employee);
 //			transaction.commit();
@@ -28,16 +34,13 @@ public class EmployeeUpdate {
 //		}
 
 		// To update specific data
-		
-		if(checkEmployee != null)
-		{
+
+		if (checkEmployee != null) {
 			checkEmployee.setName("Akash");
 			transaction.begin();
 			manager.merge(checkEmployee);
 			transaction.commit();
-		}
-		else
-		{
+		} else {
 			System.out.println("ID not found");
 		}
 	}
