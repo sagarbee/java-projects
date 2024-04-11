@@ -16,7 +16,7 @@ public class EmployeeInsert {
 		employee.setAddress("Pune");
 
 		employee.setId(2);
-		employee.setName("Sagar");
+		employee.setName("Akash");
 		employee.setPhno(9899484488l);
 		employee.setAddress("Pune");
 
