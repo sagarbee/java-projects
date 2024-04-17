@@ -1,5 +1,6 @@
 package onetomany_uni_dao;
 
+import java.util.Iterator;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -92,54 +93,76 @@ public class CompanyDao {
 	}
 
 	public void addEmployeeToExistingCompany(int companyId, Employee employee) {
-		EntityTransaction transaction = manager.getTransaction();
-		Company company = manager.find(Company.class, companyId);
-		if (company != null) {
-			transaction.begin();
-			List<Employee> employees = company.getList();
-			employees.add(employee);
-			transaction.commit();
-		} else {
-			System.out.println("Company with ID " + companyId + " not found.");
-		}
+	    Company company = manager.find(Company.class, companyId);
+	    if (company != null) {
+	        transaction.begin();
+	        manager.persist(employee);
+	        company.getList().add(employee);
+	        transaction.commit();
+	        System.out.println("Employee added to company successfully");
+	    } else {
+	        System.out.println("Company not found");
+	    }
 	}
 
-	public void addMultipleEmployeeInExistingCompany(int companyId, List<Employee> employees) {
-		EntityTransaction transaction = manager.getTransaction();
-		Company company = manager.find(Company.class, companyId);
-		if (company != null) {
-			transaction.begin();
-			List<Employee> existingEmployees = company.getList();
-			existingEmployees.addAll(employees);
-			transaction.commit();
-		} else {
-			System.out.println("Company with ID " + companyId + " not found.");
-		}
+	
+	public void addMultipleEmployeesToExistingCompany(int companyId, List<Employee> employees) {
+	    Company company = manager.find(Company.class, companyId);
+	    if (company != null) {
+	        transaction.begin();
+	        for (Employee employee : employees) {
+	            manager.persist(employee);
+	            company.getList().add(employee);
+	        }
+	        transaction.commit();
+	        System.out.println("Employees added to company successfully");
+	    } else {
+	        System.out.println("Company not found");
+	    }
 	}
 
-	public void removeEmployee(int companyId, int employeeId) {
-		EntityTransaction transaction = manager.getTransaction();
-		Company company = manager.find(Company.class, companyId);
-		if (company != null) {
-			transaction.begin();
-			List<Employee> employees = company.getList();
-			employees.removeIf(emp -> emp.getId() == employeeId);
-			transaction.commit();
-		} else {
-			System.out.println("Company with ID " + companyId + " not found.");
-		}
+	
+	public void removeEmployeeFromExistingCompany(int companyId, int employeeId) {
+	    Company company = manager.find(Company.class, companyId);
+	    if (company != null) {
+	        Employee employeeToRemove = null;
+	        for (Employee employee : company.getList()) {
+	            if (employee.getId() == employeeId) {
+	                employeeToRemove = employee;
+	                break;
+	            }
+	        }
+	        if (employeeToRemove != null) {
+	            transaction.begin();
+	            company.getList().remove(employeeToRemove);
+	            manager.remove(employeeToRemove);
+	            transaction.commit();
+	            System.out.println("Employee removed from company successfully");
+	        } else {
+	            System.out.println("Employee not found in company");
+	        }
+	    } else {
+	        System.out.println("Company not found");
+	    }
 	}
 
-	public void removeMultipleEmployee(int companyId, List<Integer> employeeIds) {
-		EntityTransaction transaction = manager.getTransaction();
-		Company company = manager.find(Company.class, companyId);
-		if (company != null) {
-			transaction.begin();
-			List<Employee> employees = company.getList();
-			employees.removeIf(emp -> employeeIds.contains(emp.getId()));
-			transaction.commit();
-		} else {
-			System.out.println("Company with ID " + companyId + " not found.");
-		}
+	
+	public void removeMultipleEmployeesFromExistingCompany(int companyId, List<Integer> employeeIds) {
+	    Company company = manager.find(Company.class, companyId);
+	    if (company != null) {
+	        transaction.begin();
+	        Iterator<Employee> iterator = company.getList().iterator();
+	        while (iterator.hasNext()) {
+	            Employee employee = iterator.next();
+	            if (employeeIds.contains(employee.getId())) {
+	                iterator.remove();
+	                manager.remove(employee);
+	            }
+	        }
+	        transaction.commit();
+	        System.out.println("Employees removed from company successfully");
+	    } else {
+	        System.out.println("Company not found");
+	    }
 	}
 }
