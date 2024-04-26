@@ -21,6 +21,13 @@ public class Person {
 	@OneToOne(cascade = CascadeType.ALL)
 	Pancard pan;
 
-	
+	public Person(int id, String name, long phone, String address, Pancard pan) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.phone = phone;
+		this.address = address;
+		this.pan = pan;
+	}
 	
 }
