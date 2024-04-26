@@ -32,7 +32,8 @@ public class CompanyDao {
 
 		Company cmp = manager.find(Company.class, id);
 		if (cmp != null) {
-			System.out.println(cmp);
+			
+			System.out.print(cmp);
 		} else {
 			System.out.println("Company ID not found");
 		}

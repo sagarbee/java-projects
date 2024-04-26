@@ -1,5 +1,6 @@
 package onetoone_uni_dto;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
@@ -15,7 +16,12 @@ public class Person {
 	private String name;
 	private long phone;
 	private String address;
-	@OneToOne
+	/*
+	 * Cascading always use for one to one and one to many
+	 */
+	
+//	@OneToOne(cascade = {CascadeType.PERSIST,CascadeType.REMOVE})
+	@OneToOne(cascade = CascadeType.ALL)
 	AdharCard adharCard;
 
 }

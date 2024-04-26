@@ -90,7 +90,7 @@ public class PersonDao {
 			
 			EntityTransaction transaction = manager.getTransaction();			
 			transaction.begin();
-			manager.merge(person.getAdharCard());
+//			manager.merge(person.getAdharCard());
 			manager.merge(person);
 			transaction.commit();
 		}

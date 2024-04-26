@@ -3,6 +3,7 @@ package manytomany_uni_dto;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
@@ -17,7 +18,7 @@ public class User {
 	private String name;
 	private long phone;
 	private String address;
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	List<Application> app;
 	
 	

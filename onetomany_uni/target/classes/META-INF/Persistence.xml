@@ -11,16 +11,19 @@
 				value="com.mysql.cj.jdbc.Driver" />
 			<property name="javax.persistence.jdbc.url"
 				value="jdbc:mysql://localhost:3306/hibernate_onetomany_uni?createDatabaseIfNotExist=true" />
-			<property name="javax.persistence.jdbc.user"
-				value="root" />
+			<property name="javax.persistence.jdbc.user" value="root" />
 			<property name="javax.persistence.jdbc.password"
 				value="Pass@123" />
 			<property name="hibernate.show_sql" value="true" />
 
 
 			<property name="hibernate.hbm2ddl.auto" value="update" />
-			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect"/>
-  
+			<property name="hibernate.dialect"
+				value="org.hibernate.dialect.MySQL8Dialect" />
+			<property name="hibernate.cache.use_second_level_cache"
+				value="true" />
+			<property name="hibernate.cache.region.factory_class"
+				value="ehcache-singleton" />
 		</properties>
 	</persistence-unit>
 </persistence>

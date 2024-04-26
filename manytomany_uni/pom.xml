@@ -3,7 +3,7 @@
   <groupId>com.qsp</groupId>
   <artifactId>manytomany_uni</artifactId>
   <version>0.0.1-SNAPSHOT</version>
- <dependencies>
+	<dependencies>
 		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
 		<dependency>
 			<groupId>mysql</groupId>

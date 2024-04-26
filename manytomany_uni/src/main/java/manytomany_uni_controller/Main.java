@@ -80,10 +80,10 @@ public class Main {
 		u1.setPhone(7895658856l);
 		u1.setAddress("Jalgaon maharashtra");
 	
-		List<Application> u1App = new ArrayList<Application>();
-		u1App.add(app1);
-		u1App.add(app2);
-		u1.setApp(u1App);
+//		List<Application> u1App = new ArrayList<Application>();
+//		u1App.add(app1);
+//		u1App.add(app2);
+//		u1.setApp(u1App);
 	
 	
 	}

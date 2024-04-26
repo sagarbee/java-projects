@@ -1,6 +1,7 @@
 package manytoone_uni_dto;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
@@ -14,6 +15,6 @@ public class Student {
 	private String name;
 	private long phone;
 	private String address;
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	College c;
 }
