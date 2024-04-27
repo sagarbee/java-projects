@@ -97,8 +97,7 @@ public class CompanyDao {
 	    Company company = manager.find(Company.class, companyId);
 	    if (company != null) {
 	        transaction.begin();
-	        manager.persist(employee);
-	        company.getList().add(employee);
+	        manager.merge(employee);
 	        transaction.commit();
 	        System.out.println("Employee added to company successfully");
 	    } else {
@@ -112,8 +111,7 @@ public class CompanyDao {
 	    if (company != null) {
 	        transaction.begin();
 	        for (Employee employee : employees) {
-	            manager.persist(employee);
-	            company.getList().add(employee);
+	            manager.merge(employee);
 	        }
 	        transaction.commit();
 	        System.out.println("Employees added to company successfully");

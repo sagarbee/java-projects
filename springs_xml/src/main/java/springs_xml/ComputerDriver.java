@@ -13,8 +13,12 @@ public class ComputerDriver {
 		//Using Springs
 		BeanFactory factory = new ClassPathXmlApplicationContext("mycomputer.xml");
 		Computer computer =(Computer) factory.getBean("comp");
-
-		computer.used();
+		System.out.println(computer);
+//		computer.used();
+		
+		Computer computer1 =(Computer) factory.getBean("comp");
+		System.out.println(computer1);
+	
 	}
 
 }
